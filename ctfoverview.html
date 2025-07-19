@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="generator" content="CherryTree">
+  <title>CTF Overview *Currently being worked on*</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="scroll">
+    <nav class="headercont">
+        <div class="nav">
+          <div class="hamburger" id="hamburger">
+            &#9776;
+          </div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="home.html" class="nav-link" data-text="Home">Home</a></li>
+            <li><a href="ctfoverview.html" class="nav-link" data-text="CTF Overview">CTF Overview</a></li>
+            <li><a href="aboutme.html" class="nav-link" data-text="About Me">About Me</a></li>
+          </ul>
+        </div>
+      </nav>
+
+      <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const mobileBreakpoint = 460;
+    
+      
+        function isMobileView() {
+            return window.innerWidth <= mobileBreakpoint;
+        }
+    
+        
+        if (!isMobileView()) {
+            hamburger.style.display = 'none';
+        }
+    
+        // toggle menu only on mobile
+        hamburger.addEventListener('click', () => {
+            if (isMobileView()) {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            }
+        });
+    
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMobileView()) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    
+        
+        document.addEventListener('click', (e) => {
+            if (isMobileView() && 
+                !hamburger.contains(e.target) && 
+                !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    
+        
+        window.addEventListener('resize', () => {
+            if (isMobileView()) {
+                hamburger.style.display = 'block';
+            } else {
+                hamburger.style.display = 'none';
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    </script>
+
+    
+<section id="ctfoverview" class="page-section">
+    <div class='page-panel'><iframe src='' id='page_frame' title='Content Frame' aria-label='Content Frame'></iframe></div>
+    <div class='two-panels'>
+        <div class='tree-panel'>
+            <div class='tree'>
+                <div class="tree-controls">
+                    <button type="button" class="animated-button" onclick='expandAllSubtrees()' title="Expand All" aria-label="Expand All">
+                        <span class="text">Expand All</span>
+                        <svg viewBox="0 0 24 24" class="arr-2" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" fill="currentColor"></path>
+                        </svg>
+                        <span class="circle"></span>
+                    </button> 
+                    <button type="button" class="animated-button" onclick='collapseAllSubtrees()' title="Collapse All" aria-label="Collapse All">
+                        <span class="text">Collapse All</span>
+                        <svg viewBox="0 0 24 24" class="arr-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16">
+                            <path d="M16.1716 10.9999L10.8076 5.63589L12.2218 4.22168L20 11.9999L12.2218 19.778L10.8076 18.3638L16.1716 12.9999H4V10.9999H16.1716Z" fill="currentColor"></path>
+                        </svg>
+                        <span class="circle"></span>
+                    </button>
+                </div>
+                <div class="search-box">
+                    <input type="text" id="treeSearch" placeholder="Search CTFs..." onkeyup="filterTree()">
+                </div>
+                <ul class='outermost'>
+                    <li>
+                        <button type="button" onclick='toggleSubTree(this)' aria-label="Toggle HackTheBox" title="Toggle HackTheBox">-</button> 
+                        <a href='#' onclick="changeFrame('HackTheBox_27.html')">HackTheBox</a>
+                        <ul class='subtree'>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('HackTheBox--UnderPass_28.html')">UnderPass</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('HackTheBox--UnderPass--Port_22_(ssh)_32.html')">Port 22 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('HackTheBox--UnderPass--Port_80_(http)_29.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('HackTheBox--UnderPass--port_161_(snmp)_30.html')">port 161 (snmp)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('HackTheBox--UnderPass--PrivEsc_33.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                        <a href='#' onclick="changeFrame('Proving_grounds_8.html')">Proving_grounds</a>
+                        <ul class='subtree'>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Assertion101_50.html')">Assertion101</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Assertion101--Port_22_(SSH)_52.html')">Port 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Assertion101--Port_80_(HTTP)_51.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Assertion101--PrivEsc_53.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Blue_58.html')">Blue</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Blue--General_56.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Blue--Port_80_(http)_57.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Blue--PRIVESC_62.html')">PRIVESC</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--BTRSys2.1_44.html')">BTRSys2.1</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--BTRSys2.1--Port_80_(http)_45.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--BTRSys2.1--PrivEsc_46.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--CyberSploit_63.html')">CyberSploit</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--CyberSploit--General_59.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--CyberSploit--PORT_22_(SSH)_60.html')">PORT 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--CyberSploit--PORT_80_(HTTP)_61.html')">PORT 80 (HTTP)</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Dawn_69.html')">Dawn</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Dawn--General_64.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Dawn--On_box_68.html')">On_box</a></li>
+                                    <li>
+                                        <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                        <a href='#' onclick="changeFrame('Proving_grounds--Dawn--PORT_80_(HTTP)_66.html')">PORT 80 (HTTP)</a>
+                                        <ul class='subtree'>
+                                            <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Dawn--PORT_80_(HTTP)--Managment.log_67.html')">Managment.log</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Dawn--PORT_445_and_139_(SMB_65.html')">PORT 445 and 139 (SMB</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--DC1_70.html')">DC1</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC1--General_71.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC1--PORT_22_(SSH)_72.html')">PORT 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC1--PORT_80_(HTTP)_73.html')">PORT 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC1--PORT_111-51796_(RPC)_74.html')">PORT 111/51796 (RPC)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC1--privesc_75.html')">privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--DC2_76.html')">DC2</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC2--General_77.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC2--Port_80_(HTTP__79.html')">Port 80 (HTTP_</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC2--Port_774_(SSH)_78.html')">Port 774 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC2--PrivEsc_80.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--DC-4_1.html')">DC-4</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC-4--Port_80_(HTTP)_2.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--DC-4--PrivEsc_3.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Election1_7.html')">Election1</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Election1--General_4.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Election1--Port_80_(http)_5.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Election1--PrivEsc_6.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Evilbox1_81.html')">Evilbox1</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Evilbox1--General_82.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Evilbox1--port_22_(ssh)_83.html')">port 22 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Evilbox1--Port_80_(http)_84.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Evilbox1--Privesc_85.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--gaar_86.html')">gaar</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--gaar--General_87.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--gaar--PORT_22_(ssh)_88.html')">PORT 22 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--gaar--PORT_80_(http)_89.html')">PORT 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--gaar--PrivEsc_90.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--glassgowSmile_91.html')">glassgowSmile</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--glassgowSmile--General_92.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--glassgowSmile--Port_80(http)_93.html')">Port 80(http)</a></li>
+                                    <li>
+                                        <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                        <a href='#' onclick="changeFrame('Proving_grounds--glassgowSmile--Privesc_94.html')">Privesc</a>
+                                        <ul class='subtree'>
+                                            <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--glassgowSmile--Privesc--abner_96.html')">abner</a></li>
+                                            <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--glassgowSmile--Privesc--penguin_97.html')">penguin</a></li>
+                                            <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--glassgowSmile--Privesc--ROB_95.html')">ROB</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--ha-natraj_98.html')">ha-natraj</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--ha-natraj--Genral_99.html')">Genral</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--ha-natraj--Port_22_(ssh)_100.html')">Port 22 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--ha-natraj--PORT_80_(http)_101.html')">PORT 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--ha-natraj--PrivEsc_102.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--ICMP_lab_103.html')">ICMP_lab</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--ICMP_lab--General_104.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--ICMP_lab--PORT_80_(http)_105.html')">PORT 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--ICMP_lab--Prive_esc_106.html')">Prive esc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Inclusive_107.html')">Inclusive</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Inclusive--Genreal_108.html')">Genreal</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Inclusive--PORT_21(FTP)_109.html')">PORT 21(FTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Inclusive--PORT_22_(SSH)_110.html')">PORT 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Inclusive--PORT_80_(HTTP)_111.html')">PORT 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Inclusive--Privesc_112.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--infosecPrep_113.html')">infosecPrep</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--infosecPrep--General_114.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--infosecPrep--Port_22_(ssh)_115.html')">Port 22 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--infosecPrep--Port_80_(http)_116.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--infosecPrep--PORT_33060(mysqlx)_117.html')">PORT 33060(mysqlx)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--infosecPrep--PrivEsc_118.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Katana_15.html')">Katana</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Katana--General_9.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Katana--PORT_21_(FTP)_10.html')">PORT 21 (FTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Katana--PORT_80_(http)_11.html')">PORT 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Katana--PORT_8088_(http)_12.html')">PORT 8088 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Katana--PORT_8715_(http)_13.html')">PORT 8715 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Katana--PrivEsc_14.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Lampio_119.html')">Lampio</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Lampio--General_120.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Lampio--port_1898_(http)_121.html')">port 1898 (http)</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Loly_47.html')">Loly</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Loly--Port_80_(http)_48.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Loly--PrivEsc_49.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Money_122.html')">Money</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Money--General_123.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Money--PORT_21_(FTP)_124.html')">PORT 21 (FTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Money--PORT_22_(SSH)_125.html')">PORT 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Money--PORT_80_(HTTP)_126.html')">PORT 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Money--PRIVESC_127.html')">PRIVESC</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--monitoring_128.html')">monitoring</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--monitoring--General_129.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--monitoring--PORT_80_(HTTP)_130.html')">PORT 80 (HTTP)</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--myCms-cms_131.html')">myCms-cms</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--myCms-cms--General_132.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--myCms-cms--Port_80_(HTTP)_133.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--myCms-cms--Port_3306_(MYSQL)_134.html')">Port 3306 (MYSQL)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--myCms-cms--Privesc_135.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Photographer_136.html')">Photographer</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Photographer--General_137.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Photographer--PORT_21(FTP)_138.html')">PORT 21(FTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Photographer--PORT_61000_(SSH)_139.html')">PORT 61000 (SSH)</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Potato_140.html')">Potato</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Potato--General_141.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Potato--Port_22_(SSH)_142.html')">Port 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Potato--Port_80_(HTTP)_144.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Potato--Port_2112_(FTP)_145.html')">Port 2112 (FTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Potato--Privesc_143.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Pwned1_39.html')">Pwned1</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Pwned1--port_21_(ftp)_41.html')">port 21 (ftp)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Pwned1--port_22_(ssh)_42.html')">port 22 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Pwned1--Port_80_(http)_40.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Pwned1--PrivEsc_43.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--PYexp_146.html')">PYexp</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--PYexp--General_147.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--PYexp--Port_1337_(ssh)_149.html')">Port 1337 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--PYexp--PORT_3306_(mysql)_148.html')">PORT 3306 (mysql)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--PYexp--privesc_150.html')">privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Sar_151.html')">Sar</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sar--General_152.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sar--PORT_80_(http)_153.html')">PORT 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sar--Privesc_154.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Sepaku_155.html')">Sepaku</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sepaku--General_156.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sepaku--Port_22_(ssh)_157.html')">Port 22 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sepaku--Port_7601_(http)_158.html')">Port 7601 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sepaku--PrivEsc_159.html')">PrivEsc</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sepaku--PrivEsc_160.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Shakabrah_161.html')">Shakabrah</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Shakabrah--General_162.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Shakabrah--Port_80_(http)_163.html')">Port 80 (http)</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--solcsitce_164.html')">solcsitce</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--solcsitce--General_165.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--solcsitce--PORT_25_(exim)_167.html')">PORT 25 (exim)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--solcsitce--Port_8593_(http)_166.html')">Port 8593 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--solcsitce--PrivEsc_168.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--soSimple_169.html')">soSimple</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--soSimple--General_170.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--soSimple--Port_22_(SSH)_171.html')">Port 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--soSimple--Port_80_(HTTP)_172.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--soSimple--Privesc_173.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Stapler_21.html')">Stapler</a>
+                                <ul class='subtree'>
+                                    <li>
+                                        <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                        <a href='#' onclick="changeFrame('Proving_grounds--Stapler--General_16.html')">General</a>
+                                        <ul class='subtree'>
+                                            <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Stapler--General--Usernames_17.html')">Usernames</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Stapler--port_3306_(mysql)_19.html')">port 3306 (mysql)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Stapler--Port_12380_(http)_18.html')">Port 12380 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Stapler--Privesc_20.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Sumo_174.html')">Sumo</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sumo--General_175.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sumo--Port_22_(SSH)_176.html')">Port 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sumo--Port_80_(HTTP)_177.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Sumo--Privesc_178.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--SunsetDecoy_179.html')">SunsetDecoy</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--SunsetDecoy--General_180.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--SunsetDecoy--Port_22_(SSH)_181.html')">Port 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--SunsetDecoy--PORT_80_(HTTP)_182.html')">PORT 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--SunsetDecoy--PrivEsc_183.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--SunsetMidnight_34.html')">SunsetMidnight</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--SunsetMidnight--phppass_hash_gen_37.html')">phppass hash gen</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--SunsetMidnight--port_80__(http)_35.html')">port 80  (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--SunsetMidnight--port_3306_(mysql)_36.html')">port 3306 (mysql)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--SunsetMidnight--PrivEsc_38.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Tre_192.html')">Tre</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Tre--Port_22_(ssh)_194.html')">Port 22 (ssh)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Tre--port_80_(HTTP)_193.html')">port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Tre--PrivESc_195.html')">PrivESc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Vegeta1_184.html')">Vegeta1</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Vegeta1--General_185.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Vegeta1--PORT_80_(HTTP)y_186.html')">PORT 80 (HTTP)y</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Vegeta1--Privesc_187.html')">Privesc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--Wpwn_188.html')">Wpwn</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Wpwn--General_189.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Wpwn--Port_80_(http)_190.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--Wpwn--PrivEsc_191.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--NoName_196.html')">NoName</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--NoName--Port_80_(HTTP)_197.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--NoName--PrivEsc_198.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('Proving_grounds--InsanityHosting_199.html')">InsanityHosting</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('Proving_grounds--InsanityHosting--Port_80_(HTTP)_200.html')">Port 80 (HTTP)</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                        <a href='#' onclick="changeFrame('TryHackMe_22.html')">TryHackMe</a>
+                        <ul class='subtree'>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('TryHackMe--LazyAdmin_23.html')">LazyAdmin</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--LazyAdmin--General_24.html')">General</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--LazyAdmin--Port_80_(http)_25.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--LazyAdmin--PrivEsc_26.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('TryHackMe--Daily_Bugel_201.html')">Daily Bugel</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Daily_Bugel--Port_80(HTTP)_202.html')">Port 80(HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Daily_Bugel--PrivEsc_203.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('TryHackMe--Agent_Sudo_204.html')">Agent Sudo</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Agent_Sudo--Port_21_(FTP)_206.html')">Port 21 (FTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Agent_Sudo--Port_80_(HTTP)_205.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Agent_Sudo--PrivEsc_207.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('TryHackMe--Cyborg_208.html')">Cyborg</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Cyborg--Port_80_(HTTP)_209.html')">Port 80 (HTTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Cyborg--PrivEsc_210.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button" onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('TryHackMe--Wgel_211.html')">Wgel</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Wgel--Port_22_(SSH)_213.html')">Port 22 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Wgel--Port_80_(http)_212.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Wgel--PrivEsc_214.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('TryHackMe--ignite_215.html')">ignite</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--ignite--Port_80_(http)_216.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--ignite--PrivEsc_217.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <button type="button"onclick='toggleSubTree(this)'>-</button> 
+                                <a href='#' onclick="changeFrame('TryHackMe--Boiler_218.html')">Boiler</a>
+                                <ul class='subtree'>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Boiler--Port_80_(http)_219.html')">Port 80 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Boiler--Port_21_(FTP)_220.html')">Port 21 (FTP)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Boiler--Port_10000_(http)_221.html')">Port 10000 (http)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Boiler--Port_55007_(SSH)_222.html')">Port 55007 (SSH)</a></li>
+                                    <li class='leaf'><a href='#' onclick="changeFrame('TryHackMe--Boiler--PrivEsc_223.html')">PrivEsc</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+        </div>
+    </div>
+</section>
+
+<script>
+function changeFrame(fileName) {
+    document.getElementById('page_frame').src = fileName;
+  }
+</script>
+  
+
+<script src="index.js"></script>
+</body>
+</html>

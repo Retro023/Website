@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="CherryTree">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>MUTEAVERY</title>
+ 
+    <body class="scroll">
+    <nav class="headercont">
+        <div class="nav">
+          <div class="hamburger" id="hamburger">
+            &#9776;
+          </div>
+          <ul class="nav-links" id="nav-links">
+            <li><a href="home.html" class="nav-link" data-text="Home">Home</a></li>
+            <li><a href="ctfoverview.html" class="nav-link" data-text="CTF Overview">CTF Overview</a></li>
+            <li><a href="aboutme.html" class="nav-link" data-text="About Me">About Me</a></li>
+          </ul>
+        </div>
+      </nav>
+
+
+  <style>
+body{
+  background-color: black;
+}
+.page-section {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    max-width: 100%;
+    height: 100vh;
+}
+
+    .hero {
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: clamp(3rem, 8vw, 8rem);
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        margin-bottom: 2rem;
+        background: linear-gradient(45deg, #c10000, #430000, #000000);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .hero-subtitle {
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        font-weight: 300;
+        color: #ccc;
+        margin-bottom: 3rem;
+        max-width: 600px;
+    }
+
+    .hero-cta {
+        display: inline-block;
+        padding: 1rem 2rem;
+        border: 1px solid #440006;
+        color: #dcd3d4;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.6s ease;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        z-index: 2;
+    }
+
+    .hero-cta:hover {
+        background: #5b0008;
+        color: #fff;
+        transform: translateY(-2px);
+    }
+
+   
+    .about {
+        background: #fff;
+        color: #000;
+    }
+
+    .section-title {
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 700;
+        margin-bottom: 3rem;
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
+    .about-content {
+        max-width: 800px;
+        text-align: center;
+    }
+
+    .about-text {
+        font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+        font-weight: 300;
+        line-height: 1.8;
+        margin-bottom: 2rem;
+    }
+
+    .about-highlight {
+        color: #d40e1f;
+        font-weight: 500;
+    }
+
+   .skills-section {
+        background: #000;
+        padding: 6rem 2rem;
+    }
+
+    .timeline {
+        display: flex;
+        flex-direction: column;
+        gap: 45px;
+        max-width: 900px;
+        width: 100%;
+    }
+
+    .timeline-item {
+        position: relative;
+        padding-left: 30px;
+        border-left: 2px solid #d40e1f;
+        transition: transform 0.6s ease, color 0.6s ease;
+        text-align: left;
+    }
+
+    .timeline-item:hover {
+        transform: translateX(6px);
+    }
+
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -9px;
+        top: 6px;
+        width: 12px;
+        height: 12px;
+        background: #d40e1f;
+        border-radius: 100%;
+        box-shadow: 0 0 10px #d40e1f88;
+    }
+
+    .timeline-item h3 {
+        font-size: 1.25rem;
+        font-weight: 300;
+        color: #fff;
+        margin-bottom: 8px;
+    }
+
+    .timeline-item .date {
+        font-size: 0.8rem;
+        color: #999;
+        font-style: italic;
+        margin-bottom: 12px;
+    }
+
+    .timeline-item p {
+        font-weight: 300;
+        color: #bbb;
+        line-height: 1.6rem;
+        max-width: 800px;
+    }
+
+    .cards-section {
+        background: #0b0b0c;
+        padding: 8rem 2rem;
+    }
+
+    .card-wrapper {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 3rem;
+        justify-items: center;
+        max-width: 1200px;
+    }
+
+    .outer {
+        width: 300px;
+        height: 250px;
+        border-radius: 10px;
+        padding: 1px;
+        background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d);
+        position: relative;
+    }
+
+    .dot {
+        width: 5px;
+        aspect-ratio: 1;
+        position: absolute;
+        background-color: #fff;
+        box-shadow: 0 0 10px #ffffff;
+        border-radius: 100px;
+        z-index: 2;
+        right: 10%;
+        top: 10%;
+        animation: moveDot 6s linear infinite;
+    }
+
+    @keyframes moveDot {
+        0%, 100% { top: 10%; right: 10%; }
+        25% { top: 10%; right: calc(100% - 35px); }
+        50% { top: calc(100% - 30px); right: calc(100% - 35px); }
+        75% { top: calc(100% - 30px); right: 10%; }
+    }
+
+    .card {
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        border-radius: 9px;
+        border: solid 1px #202222;
+        background-size: 20px 20px;
+        background: radial-gradient(circle 280px at 0% 0%, #444444ba, #0c0d0d);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        flex-direction: column;
+        color: #fff;
+        padding: 2rem;
+        text-align: center;
+    }
+
+    .card h3 {
+        font-size: 1.2rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+    }
+
+    .card p {
+        font-size: 0.9rem;
+        font-weight: 300;
+        line-height: 1.5;
+    }
+
+    .ray {
+        width: 220px;
+        height: 45px;
+        border-radius: 100px;
+        position: absolute;
+        background-color: #c7c7c7;
+        opacity: 0.4;
+        box-shadow: 0 0 50px #fff;
+        filter: blur(10px);
+        transform-origin: 10%;
+        top: 0%;
+        left: 0;
+        transform: rotate(40deg);
+    }
+
+    .line {
+        position: absolute;
+        z-index: 2;
+        background-color: #131313;
+        opacity: 0.8;
+        box-shadow: 0 0 6px #04040488, 0 0 12px #414141;
+    }
+
+    .topl {
+        top: 10%;
+        height: 2px;
+        width: 100%;
+        background: linear-gradient(90deg, #0e0e0e6f, #5a595920, #d1d1d176);
+    }
+
+    .bottoml {
+        bottom: 10%;
+        height: 2px;
+        width: 100%;
+        background: linear-gradient(90deg, #0e0e0e6f, #5a595920, #d1d1d176);
+    }
+
+    .leftl {
+        left: 10%;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(90deg, #0e0e0e6f, #5a595920, #d1d1d176);
+    }
+
+    .rightl {
+        right: 10%;
+        width: 2px;
+        height: 100%;
+        background: linear-gradient(90deg, #0e0e0e6f, #5a595920, #d1d1d176);
+    }
+
+    .projects {
+        background: #fff;
+        color: #000;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        gap: 3rem;
+        max-width: 1200px;
+        width: 100%;
+    }
+
+    .project-card {
+        padding: 2rem;
+        border: 1px solid #eee;
+        transition: all 0.6s ease;
+        background: #fafafa;
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        border-color: #d40e1f;
+    }
+
+    .project-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #d40e1f;
+    }
+
+    .project-description {
+        font-size: 1rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        color: #666;
+    }
+
+    .project-tech {
+        font-size: 0.9rem;
+        color: #999;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    .contact {
+        background: #000;
+        text-align: center;
+    }
+
+    .contact-content {
+        max-width: 600px;
+    }
+
+    .contact-text {
+        font-size: 1.2rem;
+        font-weight: 300;
+        margin-bottom: 3rem;
+        color: #ccc;
+    }
+
+    .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        flex-wrap: wrap;
+    }
+
+    .contact-link {
+        display: inline-block;
+        padding: 1rem 2rem;
+        border: 1px solid #333;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.6s ease;
+        letter-spacing: 0.05em;
+    }
+
+    .contact-link:hover {
+        border-color: #d40e1f;
+        color: #d40e1f;
+        transform: translateY(-2px);
+    }
+
+
+    @media (max-width: 768px) {
+        .page-section {
+            padding: 3rem 1rem;
+        }
+
+        .timeline-item {
+            padding-left: 20px;
+            text-align: left;
+        }
+
+        .card-wrapper {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+        }
+
+        .contact-links {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact-link {
+            width: 100%;
+            max-width: 300px;
+        }
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* mobile! */
+
+    @media (max-width: 480px) {
+    .page-section {
+        padding: 2rem 1rem;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .hero-title {
+        margin-bottom: 1.5rem;
+        font-size: clamp(2.5rem, 10vw, 4rem);
+    }
+
+    .hero-subtitle {
+        margin-bottom: 2rem;
+        font-size: clamp(1rem, 4vw, 1.5rem);
+        max-width: 90%;
+    }
+
+    .hero-cta {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .section-title {
+        margin-bottom: 2rem;
+        font-size: clamp(2rem, 8vw, 3rem);
+    }
+
+    .about-text {
+        font-size: clamp(1rem, 3.5vw, 1.2rem);
+        max-width: 90%;
+    }
+
+    .timeline {
+        gap: 30px;
+    }
+
+    .timeline-item {
+        padding-left: 20px;
+    }
+
+    .timeline-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .timeline-item p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    .card-wrapper {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .outer {
+        width: 100%;
+        max-width: 280px;
+        height: 220px;
+    }
+
+    .card {
+        padding: 1.5rem;
+    }
+
+    .card h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .card p {
+        font-size: 0.85rem;
+    }
+
+    .projects-grid {
+        gap: 1.5rem;
+    }
+
+    .project-card {
+        padding: 1.5rem;
+    }
+
+    .project-title {
+        font-size: 1.3rem;
+    }
+
+    .project-description {
+        font-size: 0.95rem;
+    }
+
+    .contact-text {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .contact-link {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+</style>
+
+
+
+<section class="page-section hero">
+  <h1 class="hero-title">Mute Avery</h1>
+  <p class="hero-subtitle">Web App Penetration Tester • Digital Forensics Specialist</p>
+  <a href="#about" class="hero-cta">Discover More</a>
+</section>
+
+<section class="page-section about" id="about">
+  <div class="about-content">
+      <h2 class="section-title">About</h2>
+      <p class="about-text">
+          I’m a CTF competitor who loves the thrill of tracking down <span class="about-highlight">hidden flags</span> and spotting <span class="about-highlight">SQL injection vulnerabilities</span>. From buffer overflows to XSS, I enjoy breaking things down and figuring out exactly how they work.
+      </p>
+      <p class="about-text">
+        When I’m not exploring web apps, I’m analyzing memory dumps or reverse engineering binaries, always looking for clues and ways to get that satisfying <span class="about-highlight">root shell</span>. Building custom payloads and cracking tough challenges is what keeps me going.
+    </p>
+</div>
+</section>
+
+
+
+<section class="page-section skills-section">
+    <h2 class="section-title">Skills</h2>
+    <div class="timeline">
+        <div class="timeline-item">
+            <h3>Web App Penetration Testing</h3>
+            <div class="date">2022 - Present</div>
+            <p>Explored the intricacies of web application penetration testing, identifying vulnerabilities and weaknesses to enhance system security.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Python Programming</h3>
+            <div class="date">2021 - Present</div>
+            <p>Python programming, including web exploit developtment, data analysis, and automation scripts.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Memory Forensics</h3>
+            <div class="date">2023 - Present</div>
+            <p>Explored the intricacies of memory forensics, delving into the analysis of memory dumps to uncover hidden data and identify potential security breaches.</p>
+        </div>
+        <div class="timeline-item">
+            <h3>Linux & Linux Privilege Escalation</h3>
+            <div class="date">2020 - Present</div>
+            <p>Focused on web security and digital forensics.</p>
+        </div>
+    </div>
+</section>
+
+<section class="page-section cards-section">
+    <h2 class="section-title">Personal</h2>
+    <div class="card-wrapper">
+        <div class="outer">
+            <div class="dot"></div>
+            <div class="ray"></div>
+            <div class="line topl"></div>
+            <div class="line bottoml"></div>
+            <div class="line leftl"></div>
+            <div class="line rightl"></div>
+            <div class="card">
+                <h3>OS of Choice</h3>
+                <p>Arch for home desktop and Kali Linux for CTFs  — performance meets security.</p>
+            </div>
+        </div>
+        <div class="outer">
+            <div class="dot"></div>
+            <div class="ray"></div>
+            <div class="line topl"></div>
+            <div class="line bottoml"></div>
+            <div class="line leftl"></div>
+            <div class="line rightl"></div>
+            <div class="card">
+                <h3>Text Editor</h3>
+                <p>Neovim — fast, minimalist, and customizable.</p>
+            </div>
+        </div>
+        <div class="outer">
+            <div class="dot"></div>
+            <div class="ray"></div>
+            <div class="line topl"></div>
+            <div class="line bottoml"></div>
+            <div class="line leftl"></div>
+            <div class="line rightl"></div>
+            <div class="card">
+                <h3>Movies That Hit</h3>
+                <p>Wargames, Mr. Robot, Tokyo Ghoul, Sakamoto Days.</p>
+            </div>
+        </div>
+        <div class="outer">
+            <div class="dot"></div>
+            <div class="ray"></div>
+            <div class="line topl"></div>
+            <div class="line bottoml"></div>
+            <div class="line leftl"></div>
+            <div class="line rightl"></div>
+            <div class="card">
+                <h3>Late Night Grind</h3>
+                <p>Obsidan notes on one screen, learning material on the other </p>
+            </div>
+        </div>
+        <div class="outer">
+            <div class="dot"></div>
+            <div class="ray"></div>
+            <div class="line topl"></div>
+            <div class="line bottoml"></div>
+            <div class="line leftl"></div>
+            <div class="line rightl"></div>
+            <div class="card">
+                <h3>Languages I Speak</h3>
+                <p>Python, Bash, C and Rust</p>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="page-section projects">
+    <h2 class="section-title"> Just some projects</h2>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3 class="project-title">JAEA</h3>
+            <p class="project-description">
+              JAEA or Just another Encription algorithm, is a small project thats just a simple Encription that utilses,salt,random large prime numbers to create randomness
+              and lastly base85 so the output can be passed over web traffic.
+            </p>
+            <div class="project-tech">Project version</div>
+            <p>0.1</p>
+        </div>
+        <div class="project-card">
+            <h3 class="project-title">CTF Proof of concepts</h3>
+            <p class="project-description">
+                These are Proof of concepts I made during CTFs to help me pwn they
+            </p>
+            <div class="project-tech">Project version</div>
+            <p>2.0</p>
+        </div>
+          
+        <div class="project-card">
+            <h3 class="project-title"> nightHawk OS</h3>
+            <p class="project-description">
+               A custom OSint distro built ontop of debain 
+            </p>
+            <div class="project-tech">Project Version</div>
+            <p>0.05</p>
+        </div>
+    </div>
+</section>
+<section class="page-section contact">
+    <div class="contact-content">
+        <h2 class="section-title">Let's Connect</h2>
+        <p class="contact-text">
+            Interested in cybersecurity collaboration, penetration testing projects, or just want to discuss the latest vulnerabilities? Let's talk.
+        </p>
+        <div class="contact-links">
+            <a href="https://github.com/Retro023" class="contact-link">GitHub</a>
+            <a href="mailto:crimsonowl42@protonmail.com" class="contact-link">Email</a>
+        </div>
+    </div>
+</section>
+
+      <script>
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const mobileBreakpoint = 460;
+    
+      
+        function isMobileView() {
+            return window.innerWidth <= mobileBreakpoint;
+        }
+    
+        
+        if (!isMobileView()) {
+            hamburger.style.display = 'none';
+        }
+
+    
+        // toggle menu only on mobile
+        hamburger.addEventListener('click', () => {
+            if (isMobileView()) {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            }
+        });
+    
+        const links = document.querySelectorAll('.nav-link');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                if (isMobileView()) {
+                    navLinks.classList.remove('active');
+                    hamburger.classList.remove('active');
+                }
+            });
+        });
+    
+        
+        document.addEventListener('click', (e) => {
+            if (isMobileView() && 
+                !hamburger.contains(e.target) && 
+                !navLinks.contains(e.target)) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    
+        
+        window.addEventListener('resize', () => {
+            if (isMobileView()) {
+                hamburger.style.display = 'block';
+            } else {
+                hamburger.style.display = 'none';
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    </script>
+
+<canvas id="canvas"></canvas>
+
+<script>
+    const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let w, h;
+
+function resize() {
+  w = canvas.width = window.innerWidth;
+  h = canvas.height = window.innerHeight;
+}
+window.addEventListener('resize', resize);
+resize();
+
+class StringLine {
+  constructor(index) {
+    this.index = index;
+    this.segments = 50;
+    this.length = h * 1.3;
+
+    // Starting X base spread horizontally across the canvas width, but more centered
+    this.baseX = w * 0.1 + (w * 0.8) * Math.random();
+
+    // Y starts above screen with some randomness for layering
+    this.baseY = -this.length * Math.random();
+
+    // Speed and amplitude control how fast and wide the curves move
+    this.speed = 0.002 + Math.random() * 0.003;
+    this.amplitude = 15 + Math.random() * 10;
+
+    // Phase for smooth offset wave movement
+    this.phase = Math.random() * Math.PI * 2;
+
+    // Color selection: white/red/black with transparency
+    const colors = [
+      'rgba(255, 255, 255, 0.3)',  // white
+      'rgba(255, 40, 40, 0.3)',    // red
+      'rgba(20, 20, 20, 0.25)',    // dark near-black for subtle depth
+    ];
+    this.color = colors[index % colors.length];
+
+    // Points along the string
+    this.points = [];
+
+    for (let i = 0; i <= this.segments; i++) {
+      this.points.push({
+        x: this.baseX,
+        y: this.baseY + (this.length / this.segments) * i,
+        baseX: this.baseX,
+        baseY: this.baseY + (this.length / this.segments) * i,
+        angle: this.phase + i * 0.15
+      });
+    }
+  }
+
+  update() {
+    this.points.forEach(p => {
+      p.angle += this.speed;
+      // Smooth sine wave horizontally, no flaring
+      p.x = p.baseX + Math.sin(p.angle) * this.amplitude;
+      p.y = p.baseY;
+    });
+  }
+
+  draw(ctx) {
+    ctx.strokeStyle = this.color;
+    ctx.lineWidth = 1.2;
+    ctx.lineCap = 'round';
+
+    ctx.beginPath();
+    ctx.moveTo(this.points[0].x, this.points[0].y);
+
+    // Draw smooth quadratic bezier through points
+    for (let i = 1; i < this.points.length - 2; i++) {
+      const cpX = (this.points[i].x + this.points[i + 1].x) / 2;
+      const cpY = (this.points[i].y + this.points[i + 1].y) / 2;
+      ctx.quadraticCurveTo(this.points[i].x, this.points[i].y, cpX, cpY);
+    }
+    // Last two points
+    const secondLast = this.points[this.points.length - 2];
+    const last = this.points[this.points.length - 1];
+    ctx.quadraticCurveTo(secondLast.x, secondLast.y, last.x, last.y);
+    ctx.stroke();
+  }
+}
+
+const strings = [];
+const totalLines = 60;
+for(let i=0; i<totalLines; i++) {
+  strings.push(new StringLine(i));
+}
+
+function animate() {
+  ctx.clearRect(0, 0, w, h);
+  strings.forEach(str => {
+    str.update();
+    str.draw(ctx);
+  });
+  requestAnimationFrame(animate);
+}
+animate();
+</script>
+
+      <script src="script.js"></script>
+    </body>
+</html>
